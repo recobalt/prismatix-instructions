@@ -231,12 +231,6 @@ sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
     </picture>
   </a>
 
-Видеоинструкция от 24 авг. 2024 г. (автор Kasper): https://youtu.be/_QkGq8SLcpE
-
-Скачать можно по этой ссылке, если YouTube не загружается:
-* https://disk.yandex.ru/i/aK8ScigR9UWnvA
-* https://www.icloud.com/iclouddrive/013pnd8NLJa8Ax1c5tcXyPmyQ
-
 <br>
 
 2. В роутере Keenetic установите нужные компоненты [OPKG](https://help.keenetic.com/hc/ru/articles/213968029-Установка-внешних-Opkg-пакетов-для-версий-NDMS-2-11-и-более-ранних). Основным и обязательным является компонент "**Поддержка открытых пакетов**".
