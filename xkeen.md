@@ -6,7 +6,7 @@
 >
 
 
-1. Подключите USB-накопитель к ПК и подготовьте раздел EXT4(см. ниже). Для работы менеджера пакетов OPKG флешка должна быть отформатирована в файловой системе **EXT4**.
+1. Подключите USB-накопитель к ПК.
 
 Установите программу **[Mini Tool Partition Wizard]([https://www.aomeitech.com/pa/standard.html](https://www.dropbox.com/scl/fi/iqaztqaunc96mawvtikrh/MiniTool-Partition-Wizard-All-Editions-Pro-Delux-Enter-Ultim-Serv-Tech-12.8.exe?rlkey=0aaj8op1u6tpw45tzft76utof&st=uv8ldzar&dl=1))**.
 
