@@ -56,34 +56,26 @@
 
 1. Подключите USB-накопитель к ПК и подготовьте раздел EXT4(см. ниже). Для работы менеджера пакетов OPKG флешка должна быть отформатирована в файловой системе **EXT4**.
 
-Отформатировать можно воспользоваться бесплатной версией программы **[AOMEI Partition Assistant Standard Edition](https://www.aomeitech.com/pa/standard.html)**.
+Установите программу **[Mini Tool Partition Wizard]([https://www.aomeitech.com/pa/standard.html](https://www.dropbox.com/scl/fi/iqaztqaunc96mawvtikrh/MiniTool-Partition-Wizard-All-Editions-Pro-Delux-Enter-Ultim-Serv-Tech-12.8.exe?rlkey=0aaj8op1u6tpw45tzft76utof&st=uv8ldzar&dl=1))**.
 
-Приведем пример:
+## Установка и разметка диска
 
-*При форматировании флешки в файловую систему **EXT4** создайте раздел SWAP (обязательно первым) 1 ГБ. Это важно даже на роутерах с 512 МБ встроенной RAM, поскольку на устройствах могут быть установлены дополнительные приложения, потребляющие ресурсы. Keenetic корректно работает с **SWAP**, активируя его только при использовании 95% оперативной памяти, что помогает избежать проблем с производительностью.*
+1. Запустите установщик и нажмите **«Установить» → «Далее»**.  
+   Дождитесь полного завершения процесса установки.
 
-https://support.keenetic.ru/eaeu/ultra/kn-1811/ru/20978-preparing-a-usb-drive-as-storage-and-activating-a-swap-partition.html
+2. Подключите USB-накопитель, выберите его в программе.  
+   Щёлкните **правой кнопкой мыши** по области справа от выбранного накопителя и выберите пункт **«Удалить раздел»**.
 
-  <a href="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Paragon-Partition-Manager-Free-Light.png" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Paragon-Partition-Manager-Free-Light.png">
-      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Paragon-Partition-Manager-Free-Light.png">
-    </picture>
-  </a>
+   ![Удаление раздела](disk.png)
 
-<br>
+3. Создайте раздел **SWAP** размером **1–2 ГБ** и нажмите **OK**.  
+   На всём оставшемся свободном пространстве создайте раздел с файловой системой **ext4**.
 
+   ![Создание SWAP и ext4](swap.png)
 
-<br>
+4. Нажмите кнопку **Применить** в левом нижнем углу и дождитесь окончания форматирования.
 
-  <a href="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Paragon-Partition-Manager-Free-Light.png" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Paragon-Partition-Manager-Free-2-Light.png">
-      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Paragon-Partition-Manager-Free-2-Light.png">
-    </picture>
-  </a>
-
-После форматирования подключите уже подготовленный накопитель c файловой системой **EXT4** к USB-порту роутера. Диск должен отобразиться на странице "Приложения" в разделе "Диски и принтеры". Если USB-накопитель не определился в роутере, проверьте установлен ли компонент операционной системы "**Файловая система Ext**".
+После форматирования подключите уже подготовленный накопитель c файловой системой **EXT4** к роутеру. Диск должен отобразиться на странице "Приложения" в разделе "Диски и принтеры". Если USB-накопитель не определился в роутере, проверьте установлен ли компонент операционной системы "**Файловая система Ext**".
 
 > **Важно!** *Накопитель с файловой системой EXT4 нельзя использовать в ОС Windows. Если нужно подключить накопитель с EXT4 в Windows, можно воспользоваться специальным драйвером [ext2fsd](https://www.ext2fsd.com/), разработанным сообществом открытого программного обеспечения для файловых систем семейства ext.*
 <br>
@@ -222,7 +214,20 @@ sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 </details>
 
 <br><br>
-Перед установкой OPKG и XKeen рекомендуется сделать резервную копию прошивки и настроек роутера.<br><br>
+## Вход в веб-интерфейс роутера
+
+1. Откройте любой браузер и введите в адресной строке:  
+   `192.168.1.1`
+
+2. Откроется веб-интерфейс управления роутером.  
+   Для входа используйте стандартные данные:
+   - **Логин:** `admin`
+   - **Пароль:** `keenetic`
+
+   ![Веб-панель роутера](web.png)
+
+
+Перед установкой OPKG и XKeen рекомендуется сделать резервную копию прошивки и настроек роутера. Для этого перейдите в раздел управление -> параметры системы. Пролистайте чуть ниже:<br><br>
 
   <a href="http://192.168.1.1/system" target="_blank" rel="noopener noreferrer">
     <picture>
@@ -258,7 +263,7 @@ sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 
 <br>
 
-3. Теперь нужно установить репозиторий системы пакетов [Entware](https://forum.keenetic.net/topic/4299-entware/).
+3. Теперь нужно установить репозиторий **Entware**.
 
 > [!NOTE]
 > **Справка**: Для моделей 4G (KN-1212), Omni (KN-1410), Extra (KN-1710/1711/1713), Giga (KN-1010/1011), Ultra (KN-1810), Viva (KN-1910/1912/1913), Giant (KN-2610), Hero 4G (KN-2310/2311), Hopper (KN-3810) и Zyxel Keenetic II / III, Extra, Extra II, Giga II / III, Omni, Omni II, Viva, Ultra, Ultra II используйте для установки архив **mipsel** — [mipsel-installer.tar.gz](https://bin.entware.net/mipselsf-k3.4/installer/mipsel-installer.tar.gz)
@@ -271,7 +276,7 @@ sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 
 4. В нашем примере рассмотрим установку архива **mipsel**.
 
-Подключите уже подготовленный накопитель c файловой системой [EXT4](https://help.keenetic.com/hc/ru/articles/115005875145-Использование-файловой-системы-EXT4-на-USB-накопителях) к USB-порту роутера. Диск должен отобразиться на странице "Приложения" в разделе "Диски и принтеры".
+Подключите уже подготовленный накопитель c файловой системой EXT4 к USB-порту роутера. Диск должен отобразиться на странице "Приложения" в разделе "Диски и принтеры".
 
 <p align="center">
   <a href="http://192.168.1.1/apps" target="_blank" rel="noopener noreferrer">
@@ -281,8 +286,17 @@ sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
     </picture>
   </a>
 </p>
+В настройках включите приложение [Сервер SMB].
 
-На компьютере с помощью файлового менеджера подключитесь к диску по сети (в ОС Windows можно использовать Проводник). В настройках роутера предварительно должно быть включено приложение "[Сервер SMB](https://help.keenetic.com/hc/ru/articles/360000812220-Сервер-SMB-доступ-к-файлам-и-принтерам)" для доступа к подключаемым USB-дискам по сети.
+## Подключение к роутеру через файловый менеджер
+
+1. На компьютере откройте **Проводник** или любой другой файловый менеджер.
+2. В поле адресной строки введите:  
+   `\\192.168.1.1`
+3. Нажмите **Enter** для подключения к роутеру по локальной сети.
+
+   ![Подключение по сетевому адресу](adres192.png)
+
 
 В корне раздела диска создайте директорию **install**, куда положите файл **mipsel-installer.tar.gz**.
 
