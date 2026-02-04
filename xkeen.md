@@ -49,16 +49,20 @@
 ---
 
 > [!NOTE]
-> Эта инструкция поможет вам настроить XKeen на вашем роутере. Пожалуйста, следуйте шагам внимательно, чтобы избежать ошибок.
+> Эта инструкция поможет вам настроить XKeen на вашем роутере. Пожалуйста, следуйте шагам внимательно, чтобы избежать ошибок. ВПН можно настроить для моделей Keenetic: 4G (KN-1212), Omni (KN-1410), Extra (KN-1710/1711/1713), Giga (KN-1010/1011), Ultra (KN-1810), Viva (KN-1910/1912/1913), Giant (KN-2610), Hero 4G (KN-2310/2311), Hopper (KN-3810) и Zyxel Keenetic II / III, Extra, Extra II, Giga II / III, Omni, Omni II, Viva, Ultra, Ultra II, Ultra SE (KN-2510), Giga SE (KN-2410), DSL (KN-2010), Skipper DSL (KN-2112), Duo (KN-2110), Ultra SE (KN-2510), Hopper DSL (KN-3610) и Zyxel Keenetic DSL, LTE, VOX, Peak (KN-2710), Ultra (KN-1811), Giga (KN-1012), Hopper (KN-3811) и Hopper SE (KN-3812).
 >
 
-# Установка системы пакетов репозитория Entware на USB-накопитель
+# 1) Установка Entware на USB-накопитель(флешку)
 
-1. Подключите жесткий диск к ПК и подготовьте его разделы. Для работы менеджера пакетов OPKG диск должен быть отформатирован в файловой системе **EXT4**.
+1. Подключите USB-накопитель к ПК и подготовьте раздел EXT4(см. ниже). Для работы менеджера пакетов OPKG флешка должна быть отформатирована в файловой системе **EXT4**.
 
-Отформатировать можно воспользоваться бесплатной версией программы **Paragon Partition Manager Free** или **[AOMEI Partition Assistant Standard Edition](https://www.aomeitech.com/pa/standard.html)**.
+Отформатировать можно воспользоваться бесплатной версией программы **[AOMEI Partition Assistant Standard Edition](https://www.aomeitech.com/pa/standard.html)**.
 
-Приведем пример форматирования накопителя в **Paragon Partition Manager Free**:
+Приведем пример:
+
+*При форматировании флешки в файловую систему **EXT4** создайте раздел SWAP (обязательно первым) 1 ГБ. Это важно даже на роутерах с 512 МБ встроенной RAM, поскольку на устройствах могут быть установлены дополнительные приложения, потребляющие ресурсы. Keenetic корректно работает с **SWAP**, активируя его только при использовании 95% оперативной памяти, что помогает избежать проблем с производительностью.*
+
+https://support.keenetic.ru/eaeu/ultra/kn-1811/ru/20978-preparing-a-usb-drive-as-storage-and-activating-a-swap-partition.html
 
   <a href="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Paragon-Partition-Manager-Free-Light.png" target="_blank" rel="noopener noreferrer">
     <picture>
@@ -69,9 +73,6 @@
 
 <br>
 
-> **Рекомендация:** *При форматировании флешки в файловую систему **EXT4** рекомендуется [создать раздел **SWAP**](https://youtu.be/lN3_Uk3CtZ0) (обязательно первым) объемом 512 МБ — 1 ГБ. Это важно даже на роутерах с 512 МБ встроенной RAM, поскольку на устройствах могут быть установлены дополнительные приложения, потребляющие ресурсы. Keenetic корректно работает с **SWAP**, активируя его только при использовании 95% оперативной памяти, что помогает избежать проблем с производительностью. Кроме того, рекомендуется отключить сжатие RAM в настройках роутера во вкладке "Параметры системы".*
-
-https://support.keenetic.ru/eaeu/ultra/kn-1811/ru/20978-preparing-a-usb-drive-as-storage-and-activating-a-swap-partition.html
 
 <br>
 
