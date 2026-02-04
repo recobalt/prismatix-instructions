@@ -8,7 +8,7 @@
 
 1. Подключите USB-накопитель к ПК.
 
-2. Установите программу **[Mini Tool Partition Wizard](https://www.dropbox.com/scl/fi/iqaztqaunc96mawvtikrh/MiniTool-Partition-Wizard-All-Editions-Pro-Delux-Enter-Ultim-Serv-Tech-12.8.exe?rlkey=0aaj8op1u6tpw45tzft76utof&st=uv8ldzar&dl=1))**.
+2. Установите программу **[Mini Tool Partition Wizard](https://www.dropbox.com/scl/fi/iqaztqaunc96mawvtikrh/MiniTool-Partition-Wizard-All-Editions-Pro-Delux-Enter-Ultim-Serv-Tech-12.8.exe?rlkey=0aaj8op1u6tpw45tzft76utof&st=uv8ldzar&dl=1)**.
 
 ## Установка и разметка диска
 
