@@ -1,13 +1,5 @@
 
-# Оглавление
-- [Установка Entware](#установка-системы-пакетов-репозитория-entware-на-usb-накопитель)
-- [Установка XKeen](#установка-xkeen)
-- [Предварительные настройки](#предварительные-настройки)
-- [Настройка Xray](#настройка-xray)
-- [XKeen Config Generator](#как-использовать-генератор-конфига)
-- [Настройка DNS-over-TLS и DNS-over-HTTPS](#прокси-серверы-dns-over-tls-и-dns-over-https-для-шифрования-dns-запросов)
-- [FAQ по XKeen](#faq-по-xkeen-от-jameszero)
-
+Установка Prismatrix VPN на Keenetic.
 ---
 
 > [!NOTE]
@@ -618,10 +610,6 @@ system configuration save
 
 * **03_inbounds.json** *(режим работы **Mixed***): https://github.com/Corvus-Malus/XKeen/releases/latest/download/03_inbounds.json
 
-* **04_outbounds.json**: https://github.com/Corvus-Malus/XKeen/releases/latest/download/04_outbounds.json
-
-<br>
-
 Выберите один из вариантов маршрутизации `05_routing.json`
 
 * **05_routing.json**: https://github.com/Corvus-Malus/XKeen/releases/latest/download/05_routing.json
@@ -639,11 +627,7 @@ system configuration save
 > ВПН-подключение применяется ко всем остальным запросам, кроме заблокированных UDP-портов.
 
 <br>
-**После установки перенесите их в директорию etc/xray/configs/ нажав `Заменить файл в папке назначения`
 
-> [!NOTE]
-> **Как вставить ключ**
->
 > Перейдите в нашего Telegram-бота:  
 > https://t.me/prismatrixvpn_bot  
 > Нажмите кнопку **«Мои ключи»**, затем выберите нужный ключ, чтобы скопировать его.
@@ -651,7 +635,11 @@ system configuration save
 > ![Получение ключа в Telegram-боте](tg-bot.png)
 >
 > После этого откройте сайт **[XKeen Config Generator](https://recobalt.github.io/xkeen-config-generator/)** и вставьте скопированный ключ в соответствующее поле.
+> 
+> Нажмите "Сгенерировать конфиг", затем "Сохранить в файл".
 >
 > ![XKeen Config Generator](xkeenconfig.png)
->
+> 
+> **После установки файлов inbounds.json, routing.json и outbonds.json перенесите их в директорию etc/xray/configs/ нажав `Заменить файл в папке назначения`** и перезагрузите роутер.
+> 
 
