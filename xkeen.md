@@ -297,8 +297,7 @@ sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 
    ![Подключение по сетевому адресу](adres192.png)
 
-
-В корне раздела диска создайте директорию **install**, куда положите файл **mipsel-installer.tar.gz**.
+Зайдите в директорию с длинным названием и создайте папку **install**, куда положите файл **mipsel-installer.tar.gz**.
 
 <p align="center">
   <a href="http://192.168.1.1/apps/device/Media0" target="_blank" rel="noopener noreferrer">
@@ -311,7 +310,7 @@ sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 
 <br>
 
-5. В веб-интерфейсе роутера перейдите на страницу OPKG для выбора накопителя и добавления скрипта initrc.
+5. В веб-интерфейсе роутера(на сайте) перейдите в раздел управление, а затем на страницу OPKG для выбора накопителя и добавления скрипта initrc.
 6. Для Keenetic с версией KeeneticOS 2.12 и выше, перейдите на страницу **OPKG** и выполните следующие настройки:
 
 * В поле "Накопитель" выберите диск OPKG (метка EXT4-раздела)
@@ -355,53 +354,27 @@ sudo $(brew --prefix e2fsprogs)/sbin/e2label /dev/disk14 OPKG
 
 <br>
 
-8. Скачайте терминальную программу [Putty](https://www.putty.org/) или [Termius](https://termius.com/download) для работы с протоколами SSH и Telnet.
+8. Скачайте терминальную программу [Termius](https://termius.com/download) для работы с протоколами SSH и Telnet.
 
-9. Запустите Putty, выберите тип подключения **SSH**, впишите **IP-адрес** роутера в домашнем сегменте Home (по умолчанию 192.168.1.1), укажите **22**-й порт и нажмите кнопку Open.
+9. Запустите **Termius**. При необходимости зарегистрируйтесь или выполните вход в аккаунт.
+10. Нажмите кнопку **New Host** — справа откроется новая вкладка.
 
-> [!NOTE]
-**Важно!** ***222**-й порт используется, если в роутере установлен компонент "**Сервер SSH**". Если он не установлен, используйте **22**-й порт для подключения к **Entware**.*
+    ![Создание нового хоста](newhost.png)
 
-<p align="center">
-  <a href="root@192.168.111.1" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Putty-Light.png">
-      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Putty-Light.png">
-    </picture>
-  </a>
-</p>
+11. В поле **IP or Hostname** укажите:  
+    `192.168.1.1`
 
-<br>
+12. В разделе **Credentials** введите:
+    - **Username:** `root`
+    - **Password:** `keenetic`
 
-Подтвердите добавление ключа безопасности в кэш программы Putty для продолжения установки соединения.
+    ![Настройки подключения](ip.png)
 
-<p align="center">
-  <a href="root@192.168.111.1" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Putty-Accept-Light.png">
-      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Light/Putty-Accept-Light.png">
-    </picture>
-  </a>
-</p>
 
-При загрузке подтвердите вход, нажав **Accept**.
 
-Далее перейдите в настройки роутера при помощи протокола Secure Shell (SSH).
+>>
 
-Для авторизации в **Entware** используйте следующие данные:
-
-**login as**: `root`
-
-**root@192.168.111.1's password**: `keenetic`
-
-<p align="left">
-  <a href="root@192.168.111.1" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/Putty-1-Dark.png">
-      <img width="661px" src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/Putty-1-Dark.png">
-    </picture>
-  </a>
-</p>
+При загрузке подтвердите вход, нажав **Add and continue**.
 
 Можно установить свой пароль. Для этого введите команду **passwd**:
 
@@ -424,7 +397,7 @@ passwd
 
 <br>
 
-10. При успешной авторизации вы окажетесь в оболочке BusyBox v1.27.2 () built-in shell (ash). Теперь нужно обновить opkg-пакет, для этого введите команду:
+10. При успешной авторизации вы окажетесь в оболочке BusyBox. Теперь нужно обновить opkg-пакет, для этого введите команду:
 
 ```bash
 opkg update
@@ -447,71 +420,8 @@ opkg upgrade
 
 # Установка XKeen
 
-<details>
-<summary>Форк XKeen версии 1.1.3.8 — список изменений</summary>
-
 <br>
-
-Сравнение форка с оригинальным XKeen
-
-Изменения:
-- Исправлено добавление портов в исключения (ранее команду `xkeen -ape` нужно было прерывать по ctrl+c)
-- Исправлена совместная работа режима TProxy и socks5 (ранее Xkeen запускался в Mixed режиме, что приводило к неработоспособности прозрачного проксирования)
-- Исправлен автозапуск XKeen при старте роутера (ранее XKeen в некоторых случаях не запускался или запускался для всего устройства, а не только для своей политики - [FAQ п.12](https://jameszero.net/faq-xkeen.htm#12))
-- Переработана логика загрузки XKeen, Xray, Mihomo и GeoFile из интернета, уменьшающая вероятность их повреждения
-- Переработана логика применения правил iptables и ip6tables (ранее XKeen применял все правила, даже при не установленном компоненте IPv6)
-- Переработана логика добавления и удаления портов проксирования и исключаемых портов
-- При обновлении геофайлов, добавлении/удалении портов проксирования или портов исключений, а также выполнении других настроек, требующих перезапуск XKeen, прокси-клиент теперь перезапускается если был до этого запущен
-- При запуске `xkeen -d` без цифрового параметра, теперь отображается информация о текущей задержке автозапуска
-- При запуске или перезапуске XKeen теперь отображается информация о режиме работы - TProxy, Mixed, Redirect, Other
-- Не актуальные GeoSite и GeoIP antifilter-community заменены на базы [Re:filter](https://github.com/1andrevich/Re-filter-lists)
-- Объединены задачи планировщика по обновлению GeoSite и GeoIP. В связи с этим упразднены параметры запуска `-ugs`, `-ugi`, `-ugsc`, `-ugic`, `-dgsc`, `-dgic`
-- Параметр запуска `-ux` для обновления ядра Xray теперь поддерживает повышение/понижение версии
-- Корректная деинсталляция xray-core (ранее пакет xray не удалялся при деинсталляции)
-- Справка (`xkeen -h`) выровнена по табуляции и повышен контраст текста
-- Рефакторинг кода скриптов
-- Актуализация конфигурационных файлов xray-core
-
-Добавлено:
-- Поддержка ядра Mihomo
-- Возможность сменить ядро проксирования (Xray/Mihomo) параметрамии `-xray` и `-mihomo`
-- Возможность [OffLine установки](https://github.com/jameszeroX/XKeen/blob/main/OffLine_install.md) (параметр `-io`)
-- Возможность установки GeoIP базы [zkeenip.dat](https://github.com/jameszeroX/zkeen-ip)
-- Обновление [zkeen.dat](https://github.com/jameszeroX/zkeen-domains) и [zkeenip.dat](https://github.com/jameszeroX/zkeen-ip) по расписанию средствами XKeen
-- При недоступности GitHub API используется резервный источник релизов для XKeen, Xray и Mihomo 
-- При недоступности репозитория GitHub загрузка компонентов XKeen выполняется через прокси
-- Защита от случайного ввода дефиса вместо двоеточия при указании диапазона портов проксирования или портов исключений
-- Поддержка внешнего файла `/opt/etc/xkeen_exclude.lst` c IP-адресами и подсетями для исключения из проксирования ([образец](https://raw.githubusercontent.com/jameszeroX/xkeen/main/xkeen_exclude.lst))
-- При установке теперь можно выбрать, добавлять ли XKeen в автозагрузку при включении роутера или нет
-- При пропуске установки Xray, его конфигурационные файлы и геобазы так же пропускаются и не устанавливаются
-- Mihomo и парсер yaml-файлов Yq устанавливаются и регистрируются в entware, как полноценные ipk-пакеты
-- Параметр запуска `-remove` для полной деинсталляции XKeen (ранее деинсталляцию нужно было выполнять покомпонентно)
-- Параметры запуска `-ug` (обновление геофайлов), `-ugc` (управление заданием Cron, обновляющим геофайлы), `-dgc` (удаление задания Cron, обновляющего геофайлы)
-- Параметр запуска `-um` для обновления/установки ядра Mihomo (поддерживается повышение/понижение версии)
-- Параметры запуска: `-rrm` (обновить регистрацию Mihomo), `-drm` (удалить регистрацию Mihomo)
-- Параметр запуска `-dm` для деинсталляции ядра Mihomo
-- Параметр запуска `-g`, позволяющий переустановить (добавить/удалить) геофайлы для Xray
-- Параметр запуска `-channel`, позволяющий выбрать канал обновления XKeen между Stable и Dev ветками
-- Возможность резервного копирования и восстановления конфигурации Mihomo (параметры `-mb`, `-mbr`)
-- Возможность контролировать число открытых файловых дескрипторов, используемых прокси-клиентом и перезапускать процесс при исчерпании лимита  [подробнее](https://github.com/jameszeroX/XKeen/blob/main/FileDescriptors.md)
-
-Удалено:
-- Возможность установки GeoSite Antizapret (база повреждена в репозитории)
-- Конфигурационный файл 02_transport.json (не используется новыми ядрами xray-core)
-- Запрос на перезапись и сама перезапись конфигурационных файлов Xray, если они уже существуют на момент установки XKeen
-- Создание резервных копий Xray, так как теперь можно интерактивно установить предыдущую версию ядра параметром `-ux`. В связи с этим упразднены параметры запуска `-xb` и `-xbr`
-- Логирование процесса установки XKeen в директорию `/opt/var/log/xkeen` (на практике не использовалось)
-- Задачи планировщика по автообновлению XKeen/Xray. В связи с этим упразднены параметры запуска `-uac`, `-ukc`, `-uxc`, `-dac`, `-dkc` и `-dxc`
-- Параметры запуска: `-x` (заменён на `-ux`), `-rk` (заменён на `-rrk`), `-rx` (заменён на `-rrx`), `-rc` (не актуален)
-
-Все параметры запуска с их описанием доступны в справке по команде `xkeen -h`
-
----
-  
-</details>
-
-
-> Выполнять от пользователя root
+Введите в консоль следующее:
 
 ```bash
 opkg update && opkg upgrade && opkg install curl tar
@@ -529,53 +439,6 @@ chmod +x ./install.sh
 ./install.sh
 ```
 
-<details>
-<summary>Альтернативный вариант установки форка XKeen версии 1.1.3.8</summary>
-
-<br>
-
-> Выполнять от пользователя root
-
-```bash
-opkg update && opkg upgrade && opkg install curl tar
-```
-
-```bash
-curl -OL https://ghfast.top/https://github.com/jameszeroX/XKeen/releases/latest/download/xkeen.tar.gz
-```
-
-```bash
-tar -xvzf xkeen.tar.gz -C /opt/sbin > /dev/null && rm xkeen.tar.gz
-```
-
-```bash
-xkeen -i
-```
-
-</details>
-
-<details>
-<summary>Оригинальный вариант установки XKeen версии 1.1.3.0 (на устаревшем ядре Xray 1.8.4)</summary>
-
-<br>
-
-> Выполнять от пользователя root
-
-```bash
-opkg install curl
-```
-
-```bash
-curl -sOfL https://raw.githubusercontent.com/Skrill0/XKeen/main/install.sh
-```
-
-```bash
-chmod +x ./install.sh
-```
-
-```bash
-./install.sh
-```
 
 > *В случае возникновения ошибки <mark>«panic: runtime error: slice bounds out of range»</mark> или других неожиданных сбоев в работе Xray, рекомендуется выполнить [обновление ядра](https://github.com/Corvus-Malus/XKeen?tab=readme-ov-file#обновление-ядра-xray-до-последней-версии) на роутере до версии **25.1.30 или выше**. По умолчанию XKeen устанавливает ядро Xray версии **1.8.4**, которое может быть причиной проблем. Данная мера часто позволяет устранить ошибки и восстановить корректную работу системы.*
 
@@ -722,12 +585,8 @@ Cron запущен
 * Перейти в Web роутера *(стандартный адрес [192.168.1.1](http://192.168.1.1/policies/interface-priorities))*
 * Перейти в раздел **`Приоритеты подключений > Политики доступа в интернет`**
 * Создать политику **`XKeen`**
-* Выбрать способ доступа к интернету **`Отметить провайдера или нескольких`**
-  
-> *Доступна «Многопутевая передача». Используйте её, если у вас два провайдера.*
-
-* Перейти в раздел **`Приоритеты подключений > Применение политик`**
-* Добавить в созданную политику цели **`Клиент | Сеть`**
+* Выбрать способ доступа к интернету **`Отметить провайдера -> Ethernet`**
+* Добавить необходимых клиентов из политики по умолчанию **`в политику Xkeen`**
 
 <p align="center">
   <a href="http://192.168.1.1/policies/interface-priorities" target="_blank" rel="noopener noreferrer">
@@ -747,21 +606,9 @@ Cron запущен
   </a>
 </p>
 
-**Перенести сервисы Keenetic с 443 порта**
+Нажмите на шестерёнку в правом верхнем углу -> Командная строка. Введите туда следующее:
 
-* Перейти в CLI роутера *(стандартный адрес [192.168.1.1/a](http://192.168.1.1/a))*
 
-> **Примечание**: *Сервисы, такие как KeenDNS, будут доступны на новом порте после переноса. Например, если вы перенесли с 443 на 8443, доступ к KeenDNS будет по адресу `xxxx.keenetic.link:8443`.*
-
-* Перенести сервисы на любой из следующих портов
-
-`| 5083 | 5443 | 8083 | 8443 | 65083 |`
-
-* Команда переноса
-```bash
-ip http ssl port {port}
-```
-* Пример записи
 ```bash
 ip http ssl port 8443
 ```
@@ -792,7 +639,7 @@ system configuration save
 <br>
 
 # Настройка Xray
-Перейти в директорию `/etc/xray/configs/`
+Перейдите в директорию `/etc/xray/configs/` в проводнике
 
 <p align="center">
   <a href="http://192.168.1.1/apps/device/Media0" target="_blank" rel="noopener noreferrer">
@@ -805,12 +652,9 @@ system configuration save
 
 Нас интересуют только 3 файла: `03_inbounds.json`, `04_outbounds.json` и `05_routing.json`
 
-* **03_inbounds.json** *(режим работы **Mixed***): https://github.com/Corvus-Malus/XKeen/releases/latest/download/03_inbounds.json
+Их нужно заменить на следующие(нажмите, чтобы скачать):
 
->* *[Mixed](https://github.com/Corvus-Malus/XKeen/releases/latest/download/03_inbounds.json) — поддерживает UDP и TCP, сочетая преимущества режимов TProxy и Redirect. UDP работает через TProxy, а TCP — через Redirect, обеспечивая баланс между скоростью и производительностью.*
->* *[TProxy](https://github.com/Corvus-Malus/XKeen/releases/latest/download/03_inbounds_tproxy.json) — поддерживает UDP и TCP, отлично работает со всеми типами трафика, включая игры и стриминговые сервисы. Однако этот режим более ресурсоёмкий и самый медленный. Не рекомендуется, так как есть Mixed.*
->* *[Redirect](https://github.com/Corvus-Malus/XKeen/releases/latest/download/03_inbounds_redirect.json) — поддерживает только TCP. Это самый быстрый режим, но не подходит для проксирования стриминговых сервисов и игр.*
->
+* **03_inbounds.json** *(режим работы **Mixed***): https://github.com/Corvus-Malus/XKeen/releases/latest/download/03_inbounds.json
 
 * **04_outbounds.json**: https://github.com/Corvus-Malus/XKeen/releases/latest/download/04_outbounds.json
 
@@ -820,46 +664,34 @@ system configuration save
 
 * **05_routing.json**: https://github.com/Corvus-Malus/XKeen/releases/latest/download/05_routing.json
 
-> VPS-подключение используется для указанных IP-адресов и доменных имен (например, Google, Twitter, TikTok и др.).
+> ВПН-подключение используется для указанных сайтов (например, Google, Twitter, TikTok, Youtube и др.).
 > 
-> Прямое подключение используется для всего остального трафика, кроме заблокированных доменов и уязвимых UDP-портов.
+> Прямое подключение (через провайдера) используется для всего остального трафика.
 
 или
 
 * **05_routing.json**: https://github.com/Corvus-Malus/XKeen-docs/releases/latest/download/05_routing.json
 
-> Прямое подключение используется для доменов в зоне .ru, .su, .рф и других, а также для торрентов.
+> Прямое подключение (через провайдера) используется для доменов в зоне .ru, .su, .рф и других, а также для торрентов.
 > 
-> VPS-подключение применяется ко всем остальным запросам, кроме заблокированных UDP-портов.
+> ВПН-подключение применяется ко всем остальным запросам, кроме заблокированных UDP-портов.
 
 <br>
-
-**03_inbounds.json** - `/etc/xray/configs/03_inbounds.json`
-
-<p align="center">
-  <a href="http://192.168.1.1/policies/interface-priorities" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/03-inbounds-Dark.png">
-      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/03-inbounds-Dark.png">
-    </picture>
-  </a>
-</p>
-
-<br>
-
-**04_outbounds.json** - `/etc/xray/configs/04_outbounds.json`
-
-<p align="center">
-  <a href="http://192.168.1.1/policies/interface-priorities" target="_blank" rel="noopener noreferrer">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/04-outbounds-Dark.png">
-      <img src="https://github.com/Corvus-Malus/XKeen-docs/raw/main/images/Dark/04-outbounds-Dark.png">
-    </picture>
-  </a>
-</p>
+**После установки перенесите их в директорию etc/xray/configs/ нажав `Заменить файл в папке назначения`
 
 > [!NOTE]
-***04_outbounds.json*** *можно настроите используя [XKeen Config Generator](#как-использовать-генератор-конфига).*
+> **Как вставить ключ**
+>
+> Перейдите в нашего Telegram-бота:  
+> https://t.me/prismatrixvpn_bot  
+> Нажмите кнопку **«Мои ключи»**, затем выберите нужный ключ, чтобы скопировать его.
+>
+> ![Получение ключа в Telegram-боте](tg-bot.png)
+>
+> После этого откройте сайт **[XKeen Config Generator](#как-использовать-генератор-конфига)** и вставьте скопированный ключ в соответствующее поле.
+>
+> ![XKeen Config Generator](xkeenconfig.png)
+
 
 <br>
 
