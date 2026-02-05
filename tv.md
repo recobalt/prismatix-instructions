@@ -23,8 +23,9 @@
 ## 3. Подготовка ключа в Telegram-боте
 
 1. Откройте наш **Telegram-бот** на телефоне.  
-2. Перейдите в раздел **«Мои ключи»** ![Telegram бот](https://raw.githubusercontent.com/recobalt/prismatix-instructions/main/tg-bot.png)
+2. Перейдите в раздел **«Мои ключи»**
 3. Скопируйте ваш персональный ключ (он будет сохранён в буфере обмена).
+    ![Telegram бот](https://raw.githubusercontent.com/recobalt/prismatix-instructions/main/tg-bot.png)
 
 ---
 
