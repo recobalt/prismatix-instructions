@@ -25,7 +25,9 @@
 1. Откройте наш **Telegram-бот** на телефоне.  
 2. Перейдите в раздел **«Мои ключи»**
 3. Скопируйте ваш персональный ключ (он будет сохранён в буфере обмена).
-    ![Telegram бот](https://raw.githubusercontent.com/recobalt/prismatix-instructions/main/tg-bot.png)
+
+   
+![Telegram бот](https://raw.githubusercontent.com/recobalt/prismatix-instructions/main/tg-bot.png)
 
 ---
 
