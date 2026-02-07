@@ -640,6 +640,6 @@ system configuration save
 >
 > ![XKeen Config Generator](xkeenconfig.png)
 > 
-> **После установки файлов inbounds.json, routing.json и outbonds.json перенесите их в директорию etc/xray/configs/ нажав `Заменить файл в папке назначения`** и перезагрузите роутер.
+> ! После установки файлов inbounds.json, routing.json и outbonds.json перенесите их в директорию etc/xray/configs/ нажав `Заменить файл в папке назначения` и перезагрузите роутер.
 > 
 
