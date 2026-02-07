@@ -634,7 +634,7 @@ system configuration save
 >
 > ![Получение ключа в Telegram-боте](tg-bot.png)
 >
-> После этого откройте сайт **[XKeen Config Generator](https://recobalt.github.io/xkeen-config-generator/)** и вставьте скопированный ключ в соответствующее поле.
+> После этого откройте сайт **[для генерации конфига](https://recobalt.github.io/xkeen-config-generator/)** и вставьте скопированный ключ в соответствующее поле.
 > 
 > Нажмите "Сгенерировать конфиг", затем "Сохранить в файл".
 >
