@@ -66,7 +66,7 @@
 1. В нижней части окна найдите кнопку **Routing**.
 2. Выберите режим **Global**.
 
-![Routing](https://raw.githubusercontent.com/recobalt/prismatix-instructions/main/routing.png)
+![Routing](enablevpn.png)
 
 3. Нажмите кнопку **Enable Tun**.
 
