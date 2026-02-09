@@ -112,6 +112,3 @@
 
 ---
 
-<p align="center">
-  <a href="#как-настроить-маршрутизацию-раздельное-туннелирование" style="display:inline-block; padding:10px 20px; background-color:#4CAF50; color:white; text-decoration:none; border-radius:5px;">Перейти к статье</a>
-</p>
